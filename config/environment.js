@@ -24,6 +24,8 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+    ENV.apiUrl = 'http://localhost:3000';
+
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -45,6 +47,17 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+  }
+
+  ENV['ember-simple-auth'] = {
+    routeAfterAuthentication: 'authneticated',
+    routeIfAlreadyAuthenticated: 'authneticated'
+  }
+
+  ENV['ember-simple-auth-token'] = {
+    serverTokenEndpoint: ENV.apiUrl + '/api/v1/token',
+    identificationField: 'identificator',
+    refreshAccessTokens: false
   }
 
   return ENV;
