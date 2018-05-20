@@ -1,0 +1,17 @@
+<h2>login</h2>
+
+<form {{action "authenticate" on="submit"}}>
+  <div class="form-group">
+    <label for="email">Email</label>
+    {{input value=identification placeholder="Enter Email" class="form-control"}}
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    {{input value=password type="password" placeholder="Enter Password" class="form-control"}}
+  </div>
+
+  <button type="submit" class="center-block btn btn-default">Login</button>
+</form>
+
+{{link-to "go to registration" "registration"}}
