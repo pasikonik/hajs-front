@@ -49,11 +49,6 @@ module.exports = function(environment) {
     // here you can enable a production-specific feature
   }
 
-  ENV['ember-simple-auth'] = {
-    routeAfterAuthentication: 'authneticated',
-    routeIfAlreadyAuthenticated: 'authneticated'
-  }
-
   ENV['ember-simple-auth-token'] = {
     serverTokenEndpoint: ENV.apiUrl + '/api/v1/token',
     identificationField: 'identificator',
