@@ -9,7 +9,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('login');
   this.route('registration');
-  this.route('authenticated', { path: '' }, function() {
+  this.route('auth', { path: '' }, function() {
     this.route('places', function() {
       this.route('place', { path: ':place_id ' });
     });
