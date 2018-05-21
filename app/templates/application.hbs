@@ -1,5 +1,32 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
+{{#bs-navbar as |navbar|}}
+  <div class="container">
+    {{navbar.toggle}}
+    {{inline-svg 'coin-stack-2' class="logo"}}
+    <a class="navbar-brand" href="/">
+      <strong>Hajs</strong>App
+    </a>
+    {{#navbar.content}}
+      {{#navbar.nav as |nav|}}
+        {{#if session.isAuthenticated}}
+          {{#nav.item}}
+            {{#nav.link-to "auth.places"}}Places{{/nav.link-to}}
+          {{/nav.item}}
+          {{#nav.item}}
+            <a {{action 'logout'}} href="#" class="nav-link">Logout</a>
+          {{/nav.item}}
+        {{else}}
+          {{#nav.item}}
+            {{#nav.link-to "login"}}Login{{/nav.link-to}}
+          {{/nav.item}}
+          {{#nav.item}}
+            {{#nav.link-to "registration"}}Registration{{/nav.link-to}}
+          {{/nav.item}}
+        {{/if}}
+      {{/navbar.nav}}
+    {{/navbar.content}}
+  </div>
+{{/bs-navbar}}
 
-{{outlet}}
+<div class="container">
+  {{outlet}}
+</div>
