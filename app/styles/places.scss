@@ -1,0 +1,33 @@
+.places {
+  margin: 40px 50px;
+
+  &__title {
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+
+  &__table {
+    background-color: $gray;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__table-cell {
+    background-color: $white;
+    box-sizing: border-box;
+    cursor: pointer;
+    flex-grow: 1;
+    padding: 3px;
+    text-align: center;
+    width: 33.33%;
+
+    &:hover {
+      border: 1px solid $brand-color;
+    }
+
+    &--header {
+      background-color: $gray;
+      font-weight: 700;
+    }
+  }
+}

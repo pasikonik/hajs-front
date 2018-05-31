@@ -8,11 +8,6 @@ module.exports = function(defaults) {
       'bootstrapVersion': 4,
       'importBootstrapFont': false,
       'importBootstrapCSS': false
-    },
-    svg: {
-      paths: [
-        'public/svg'
-      ]
     }
   });
 

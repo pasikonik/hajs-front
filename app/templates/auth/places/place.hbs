@@ -1,2 +1,9 @@
-1 miejsce:
-{{model.name}}
+<div class="place text-center">
+  {{fa-icon 'home' class="justify-content-center" size="4x"}}
+
+  <h1>
+    {{model.name}}
+  </h1>
+
+  {{link-to 'Back' 'auth.places'}}
+</div>

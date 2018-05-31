@@ -1,7 +1,7 @@
 {{#bs-navbar as |navbar|}}
   <div class="container">
     {{navbar.toggle}}
-    {{inline-svg 'coin-stack-2' class="logo"}}
+    {{svg-jar "coin-stack-2" class="logo"}}
     <a class="navbar-brand" href="/">
       <strong>Hajs</strong>App
     </a>
@@ -12,7 +12,10 @@
             {{#nav.link-to "auth.places"}}Places{{/nav.link-to}}
           {{/nav.item}}
           {{#nav.item}}
-            <a {{action 'logout'}} href="#" class="nav-link">Logout</a>
+            [{{currentUser.user.email}}]
+          {{/nav.item}}
+          {{#nav.item}}
+            <a {{action "logout"}} href="#" class="nav-link">Logout</a>
           {{/nav.item}}
         {{else}}
           {{#nav.item}}
@@ -30,3 +33,5 @@
 <div class="container">
   {{outlet}}
 </div>
+
+{{notification-container position="top-right"}}

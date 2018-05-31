@@ -1,9 +1,8 @@
-<div class="login row justify-content-center">
-  <div class="col-4">
+<div class="form row justify-content-center">
+  <div class="col-3">
     {{#bs-alert type="danger" visible=errorMessage dismissible=false}}
       {{errorMessage}}
     {{/bs-alert}}
-
 
     {{#bs-form model=this onSubmit=(action "authenticate") as |form|}}
       {{form.element controlType="identification" label="Identificator" placeholder="Email or username" property="identification"}}

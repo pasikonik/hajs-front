@@ -16,10 +16,10 @@ export default Controller.extend({
       const credentials = getProperties(this, 'identification', 'password');
       try {
         await get(this, 'session').authenticate('authenticator:jwt', credentials)
+        get(this, 'notifications').success('logged in');
       } catch (e) {
-        set(this, 'errorMessage', e.error.auth);
+        set(this, 'errorMessage', e.error);
       }
-
     }
   }
 });

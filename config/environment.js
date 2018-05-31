@@ -23,6 +23,12 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['ember-cli-notifications'] = {
+    includeFontAwesome: true,
+    autoClear: true,
+    clearDuration: 3000
+  }
+
   if (environment === 'development') {
     ENV.apiUrl = 'http://localhost:3000';
 
