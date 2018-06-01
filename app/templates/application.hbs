@@ -9,13 +9,10 @@
       {{#navbar.nav as |nav|}}
         {{#if session.isAuthenticated}}
           {{#nav.item}}
+            {{#nav.link-to "auth"}}Dashboard{{/nav.link-to}}
+          {{/nav.item}}
+          {{#nav.item}}
             {{#nav.link-to "auth.places"}}Places{{/nav.link-to}}
-          {{/nav.item}}
-          {{#nav.item}}
-            [{{currentUser.user.email}}]
-          {{/nav.item}}
-          {{#nav.item}}
-            <a {{action "logout"}} href="#" class="nav-link">Logout</a>
           {{/nav.item}}
         {{else}}
           {{#nav.item}}
@@ -26,11 +23,35 @@
           {{/nav.item}}
         {{/if}}
       {{/navbar.nav}}
+      {{#if session.isAuthenticated}}
+        {{#navbar.nav class="ml-auto" as |nav|}}
+          {{#nav.dropdown as |dd|}}
+            {{#dd.toggle}}
+              {{fa-icon 'child'}}
+              {{currentUser.username}}
+            {{/dd.toggle}}
+            {{#dd.menu as |ddm|}}
+              {{#ddm.item}}
+                {{#ddm.link-to "auth.settings"}}
+                  {{fa-icon 'cog'}}
+                  Settings
+                {{/ddm.link-to}}
+              {{/ddm.item}}
+              {{#ddm.item}}
+                <a {{action "logout"}} href="#" class="dropdown-item">
+                  {{fa-icon 'sign-out-alt'}}
+                  Logout
+                </a>
+              {{/ddm.item}}
+            {{/dd.menu}}
+          {{/nav.dropdown}}
+        {{/navbar.nav}}
+      {{/if}}
     {{/navbar.content}}
   </div>
 {{/bs-navbar}}
 
-<div class="container">
+<div class="container content">
   {{outlet}}
 </div>
 
