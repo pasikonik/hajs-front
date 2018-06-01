@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('login');
   this.route('registration');
   this.route('auth', { path: '' }, function() {
+    this.route('settings');
     this.route('places', function() {
       this.route('place', { path: ':place_id' });
     });
