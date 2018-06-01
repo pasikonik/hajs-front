@@ -4,6 +4,7 @@ import { get } from '@ember/object';
 
 export default Controller.extend({
   session: service(),
+  currentUser: service(),
 
   actions: {
     logout() {
