@@ -6,4 +6,12 @@
   </h1>
 
   {{link-to 'Back' 'auth.places'}}
+
+  <div class="place__users">
+    {{#each model.users as |user|}}
+      <div class="place__user">
+        {{user.username}}
+      </div>
+    {{/each}}
+  </div>
 </div>

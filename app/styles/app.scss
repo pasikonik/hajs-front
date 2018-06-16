@@ -3,7 +3,19 @@
 @import 'navbar';
 @import 'places';
 @import 'common';
+@import 'place';
+@import 'places';
 
 .content {
   margin-top: 50px;
+}
+
+.navbar-light .navbar-brand {
+  color: rgba(0, 0, 0, .7);
+}
+
+.app-flag {
+  color: $gray-dark;
+  font-size: 11px;
+  letter-spacing: 2px;
 }

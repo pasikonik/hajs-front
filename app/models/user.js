@@ -17,5 +17,6 @@ export default DS.Model.extend(Validations, {
   email: DS.attr('string'),
   username: DS.attr('string'),
   password: DS.attr('string'),
+  ban: DS.attr('string'),
   place: DS.belongsTo('place')
 });

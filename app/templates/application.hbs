@@ -2,9 +2,10 @@
   <div class="container">
     {{navbar.toggle}}
     {{svg-jar "coin-stack-2" class="logo"}}
-    <a class="navbar-brand" href="/">
+    <div class="navbar-brand">
       <strong>Hajs</strong>App
-    </a>
+      <span class="app-flag">alpha</span>
+    </div>
     {{#navbar.content}}
       {{#navbar.nav as |nav|}}
         {{#if session.isAuthenticated}}

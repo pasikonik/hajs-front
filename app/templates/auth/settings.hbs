@@ -1,3 +1,13 @@
-<h1>Settings</h1>
+<h1 class="text-center">Settings</h1>
 
-{{outlet}}
+<div class="form row justify-content-center">
+  <div class="col-5">
+    {{#bs-form formLayout="vertical" model=model onSubmit=(action "revise") as |form|}}
+      {{form.element controlType="email" label="Email" property="email"}}
+      {{form.element controlType="username" label="Username" property="username"}}
+      {{form.element controlType="text" label="Bank Accounta Number" property="ban"}}
+      {{form.element controlType="password" label="Confirmation password" property="password"}}
+      {{bs-button defaultText="Update" type="outline-primary" block=true buttonType="submit"}}
+    {{/bs-form}}
+  </div>
+</div>

@@ -1,5 +1,10 @@
 <div class="places">
-  <h1 class="places__title text-center">Places</h1>
+  <h1 class="places__title text-center">
+    Places
+    {{#link-to 'auth.places.new'}}
+      {{fa-icon 'plus'}}
+    {{/link-to}}
+  </h1>
 
   <div class="places__table">
     <div class="places__table-cell places__table-cell--header">Name</div>

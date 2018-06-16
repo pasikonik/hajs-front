@@ -20,6 +20,7 @@ export default Service.extend({
       const userId = this._getUserIdFromToken(token);
       const user = await get(this, 'store').findRecord('user', userId);
       set(this, 'user', user)
+      return user;
     } else {
       return RSVP.resolve();
     }

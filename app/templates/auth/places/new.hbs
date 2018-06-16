@@ -1,0 +1,12 @@
+<h2 class="text-center">New place</h2>
+
+<div class="form row justify-content-center">
+  <div class="col-5">
+
+    {{#bs-form model=model onSubmit=(action "create") as |form|}}
+      {{form.element controlType="text" label="Name" property="name"}}
+      {{form.element controlType="number" label="Rent" property="rent"}}
+      {{bs-button defaultText="Create" type="outline-success" block=true buttonType="submit"}}
+    {{/bs-form}}
+  </div>
+</div>
