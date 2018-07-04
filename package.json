@@ -1,6 +1,6 @@
 {
   "name": "hajs-front",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "description": "Small description for hajs-front goes here",
   "license": "MIT",
@@ -17,13 +17,13 @@
     "test": "ember test"
   },
   "devDependencies": {
-    "@fortawesome/ember-fontawesome": "^0.1.0-8",
-    "@fortawesome/free-regular-svg-icons": "^5.1.0-8",
-    "@fortawesome/free-solid-svg-icons": "^5.1.0-8",
+    "@fortawesome/ember-fontawesome": "^0.1.0",
+    "@fortawesome/free-regular-svg-icons": "^5.1.0",
+    "@fortawesome/free-solid-svg-icons": "^5.1.0",
     "bootstrap": "^4.0.0",
     "broccoli-asset-rev": "^2.7.0",
     "ember-ajax": "^3.0.0",
-    "ember-bootstrap": "^1.2.2",
+    "ember-bootstrap": "^2.0.0",
     "ember-bootstrap-cp-validations": "^1.0.0",
     "ember-cli": "~3.2.0",
     "ember-cli-app-version": "^3.0.0",
@@ -31,7 +31,7 @@
     "ember-cli-dependency-checker": "^2.0.0",
     "ember-cli-eslint": "^4.2.1",
     "ember-cli-htmlbars": "^2.0.1",
-    "ember-cli-htmlbars-inline-precompile": "^1.0.0",
+    "ember-cli-htmlbars-inline-precompile": "^1.0.3",
     "ember-cli-inject-live-reload": "^1.4.1",
     "ember-cli-notifications": "^4.3.3",
     "ember-cli-qunit": "^4.3.2",
@@ -44,14 +44,16 @@
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.1.0",
     "ember-maybe-import-regenerator": "^0.1.6",
-    "ember-resolver": "^4.0.0",
+    "ember-resolver": "^4.5.6",
     "ember-simple-auth": "^1.6.0",
     "ember-simple-auth-token": "^4.0.2",
     "ember-source": "~3.2.0",
     "ember-svg-jar": "^1.2.0",
     "eslint-plugin-ember": "^5.0.0",
+    "liquid-fire": "^0.29.3",
+    "liquid-tether": "^2.0.7",
     "loader.js": "^4.2.3",
-    "qunit-dom": "^0.6.2"
+    "qunit-dom": "^0.7.0"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"

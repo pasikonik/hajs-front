@@ -12,6 +12,7 @@ export default Service.extend({
 
   email: alias('user.email'),
   username: alias('user.username'),
+  placeId: alias('user.place.id'),
 
   async load() {
     const token = get(this, 'session.data.authenticated.token');

@@ -5,13 +5,42 @@
     {{model.name}}
   </h1>
 
+  <div class="">
+    {{model.users.length}}
+  </div>
+
   {{link-to 'Back' 'auth.places'}}
 
-  <div class="place__users">
-    {{#each model.users as |user|}}
-      <div class="place__user">
-        {{user.username}}
-      </div>
-    {{/each}}
-  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Członkowie</th>
+        <th scope="col">Czynsz</th>
+        <th scope="col">Dług</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model.users as |user|}}
+        <tr>
+          <th>{{user.username}}</th>
+          <td>0</td>
+          <td> + </td>
+        </tr>
+      {{/each}}
+      <tr>
+        <th scope="row">{{model.users.length}}</th>
+        <td>2500zł</td>
+        <td>+/-</td>
+      </tr>
+    </tbody>
+  </table>
+
+  {{bs-button defaultText="Generuj czynsz!" type="outline-primary" onClick=(action "generateRent")}}
+  {{#bs-button type="primary" onClick=(action "generateRent")}}
+    Generuj czynsz!
+  {{/bs-button}}
+
+  {{#bs-button type="danger" onClick=(action "submit")}}
+    Button
+  {{/bs-button}}
 </div>

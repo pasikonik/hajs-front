@@ -13,6 +13,11 @@
             {{#nav.link-to "auth"}}Dashboard{{/nav.link-to}}
           {{/nav.item}}
           {{#nav.item}}
+            {{#nav.link-to "auth.places.place" currentUser.placeId}}
+              Mieszkanie
+            {{/nav.link-to}}
+          {{/nav.item}}
+          {{#nav.item}}
             {{#nav.link-to "auth.places"}}Places{{/nav.link-to}}
           {{/nav.item}}
         {{else}}
