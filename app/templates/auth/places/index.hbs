@@ -10,11 +10,17 @@
     <div class="places__table-cell places__table-cell--header">Name</div>
     <div class="places__table-cell places__table-cell--header">Rent</div>
     <div class="places__table-cell places__table-cell--header">People</div>
+    <div class="places__table-cell places__table-cell--header">Operation</div>
 
     {{#each model as |place|}}
       <div {{action "show" place}} class="places__table-cell">{{place.name}}</div>
       <div class="places__table-cell">{{place.rent}} PLN</div>
       <div class="places__table-cell">{{place.people}}</div>
+      <div class="places__table-cell">
+        {{#bs-button onClick=(action "joinToPlace" place.id)}}
+          Join
+        {{/bs-button}}
+      </div>
     {{/each}}
   </div>
 </div>
