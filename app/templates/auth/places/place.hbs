@@ -2,12 +2,8 @@
   {{fa-icon 'home' class="justify-content-center" size="4x"}}
 
   <h1>
-    {{model.name}}
+    {{place.name}}
   </h1>
-
-  <div class="">
-    {{model.users.length}}
-  </div>
 
   {{link-to 'Back' 'auth.places'}}
 
@@ -20,27 +16,22 @@
       </tr>
     </thead>
     <tbody>
-      {{#each model.users as |user|}}
+      {{#each place.users as |user|}}
         <tr>
           <th>{{user.username}}</th>
-          <td>0</td>
-          <td> + </td>
+          <td></td>
+          <td></td>
         </tr>
       {{/each}}
       <tr>
-        <th scope="row">{{model.users.length}}</th>
+        <th scope="row">{{place.users.length}}</th>
         <td>2500zł</td>
         <td>+/-</td>
       </tr>
     </tbody>
   </table>
 
-  {{bs-button defaultText="Generuj czynsz!" type="outline-primary" onClick=(action "generateRent")}}
-  {{#bs-button type="primary" onClick=(action "generateRent")}}
+  {{#bs-button type="outline-primary" onClick=(action "generateRent")}}
     Generuj czynsz!
-  {{/bs-button}}
-
-  {{#bs-button type="danger" onClick=(action "submit")}}
-    Button
   {{/bs-button}}
 </div>
