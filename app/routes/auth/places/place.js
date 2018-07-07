@@ -4,7 +4,7 @@ import moment from 'moment';
 
 export default Route.extend({
   model(params) {
-    return get(this, 'store').findRecord('place', params.place_id)
+    return this.store.findRecord('place', params.place_id, { include: ['users', 'payments'] })
   },
 
   setupController(controller, model) {

@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { get, computed } from '@ember/object';
+import { computed, set } from '@ember/object';
 import { inject as service } from '@ember/service';
 import moment from 'moment';
 
@@ -13,14 +13,17 @@ export default Controller.extend({
 
   actions: {
     async generateRent() {
-      await get(this, 'ajax').post('/payments/create_rent', {
+      await this.ajax.post('/payments/create_rent', {
         data: {
-          place_id: get(this, 'place.id'),
-          month: get(this, 'month')
+          place_id: this.place.id,
+          month: this.month
         }
       })
-      get(this, 'notifications').success('generated successfully');
+      this.notifications.success('generated successfully');
       this.place.reload();
+    },
+    changeStatus(rent) {
+      set(rent, 'status', )
     }
   }
 })

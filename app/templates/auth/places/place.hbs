@@ -19,7 +19,10 @@
       {{#each place.users as |user|}}
         <tr>
           <th>{{user.username}}</th>
-          <td></td>
+
+          {{!-- {{prepare-rent-cell rent=(get-month-rent user.rents month)
+                              change=(action 'changeStatus')}} --}}
+
           <td></td>
         </tr>
       {{/each}}
