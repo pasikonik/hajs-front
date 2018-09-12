@@ -1,11 +1,11 @@
 <div class="place text-center">
-  {{fa-icon 'home' class="justify-content-center" size="4x"}}
+  {{fa-icon "home" class="justify-content-center" size="4x"}}
 
   <h1>
     {{place.name}}
   </h1>
 
-  {{link-to 'Back' 'auth.places'}}
+  {{link-to "Back" "auth.places"}}
 
   <table class="table">
     <thead>
@@ -21,7 +21,7 @@
           <th>{{user.username}}</th>
 
           {{!-- {{prepare-rent-cell rent=(get-month-rent user.rents month)
-                              change=(action 'changeStatus')}} --}}
+                              change=(action "changeStatus")}} --}}
 
           <td></td>
         </tr>
