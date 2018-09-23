@@ -1,8 +1,8 @@
 <div class="cell {{rent.status}}">
   {{#if rent.amount}}
-    {{rent.amount}}zł
+    {{rent.amount}}zł - {{rent.status}}
   {{/if}}
-  {{#if (eq rent.status "sending")}}
+  {{!-- {{#if (eq rent.status "sending")}}
     {{fa-icon "paper-plane-o"}}
   {{/if}}
   {{#if (eq rent.status "wait")}}
@@ -10,5 +10,5 @@
   {{/if}}
   {{#if (eq rent.status "paid")}}
     {{fa-icon "thumbs-o-up"}}
-  {{/if}}
+  {{/if}} --}}
 </div>

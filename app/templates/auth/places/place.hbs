@@ -20,8 +20,8 @@
         <tr>
           <th>{{user.username}}</th>
 
-          {{!-- {{prepare-rent-cell rent=(get-month-rent user.rents month)
-                              change=(action "changeStatus")}} --}}
+          {{rent-cell rent=(get-user-rent user.rents month)
+                      change=(action "changeStatus")}}
 
           <td></td>
         </tr>

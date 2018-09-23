@@ -1,14 +1,20 @@
 import Controller from '@ember/controller';
-import { computed, set } from '@ember/object';
+import { computed, get } from '@ember/object';
 import { inject as service } from '@ember/service';
+import { alias } from '@ember/object/computed';
 import moment from 'moment';
 
 export default Controller.extend({
   ajax: service(),
+  currentUser: service(),
 
+  place: alias('model'),
   momentMonth: computed('month', function() {
     const [month, year] = this.month.split(' ');
     return moment(`${year}-${month}-01`);
+  }),
+  isPayer: computed('place.payer', function() {
+    return get(this, 'currentUser.email') === get(this, 'place.payer.email');
   }),
 
   actions: {
@@ -22,8 +28,9 @@ export default Controller.extend({
       this.notifications.success('generated successfully');
       this.place.reload();
     },
-    changeStatus(rent) {
-      set(rent, 'status', )
-    }
+    changeStatus(payment) {
+      payment.changeStatus(this.currentUser);
+      this.toggleProperty('changed');
+    },
   }
 })
