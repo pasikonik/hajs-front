@@ -6,7 +6,6 @@ import moment from 'moment';
 
 export default Controller.extend({
   ajax: service(),
-  currentUser: service(),
 
   place: alias('model'),
   momentMonth: computed('month', function() {
@@ -29,7 +28,7 @@ export default Controller.extend({
       this.place.reload();
     },
     changeStatus(payment) {
-      payment.changeStatus(this.currentUser);
+      payment.changeStatus();
       this.toggleProperty('changed');
     },
   }

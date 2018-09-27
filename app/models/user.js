@@ -23,7 +23,7 @@ export default DS.Model.extend(Validations, {
   payments: DS.hasMany('payment'),
 
   isPayer: computed('place', function() {
-    get(this, 'place')
+    return get(this, 'email') === get(this, 'place.payer.email');
   }),
   isRenter: computed('place', function() {
     return !!this.place.id;

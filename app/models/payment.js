@@ -13,8 +13,8 @@ export default DS.Model.extend({
   bill: DS.belongsTo('bill'),
   place: DS.belongsTo('place'),
 
-  changeStatus(doer) {
-    debugger
+  changeStatus() {
+    const doer = get(this, 'currentUser');
     if (doer.isPayer) {
       this._changeForPayer();
     } else {
@@ -22,8 +22,9 @@ export default DS.Model.extend({
         this._changeForTenant();
       }
     }
-    debugger
-    isPresent( this.changedAttributes().status )
+    if (isPresent(this.changedAttributes().status)) {
+      this.save();
+    }
   },
 
   _changeForTenant() {

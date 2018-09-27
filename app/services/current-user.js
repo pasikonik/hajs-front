@@ -10,9 +10,11 @@ export default Service.extend({
   session: service(),
   store: service(),
 
+  id: alias('user.id'),
   email: alias('user.email'),
   username: alias('user.username'),
   placeId: alias('user.place.id'),
+  isPayer: alias('user.isPayer'),
 
   async load() {
     const token = get(this, 'session.data.authenticated.token');
