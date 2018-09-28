@@ -5,6 +5,22 @@
   }
 
   &__user {
-    
+
+  }
+}
+
+.cell {
+  cursor: pointer;
+
+  &--paid {
+    color: green;
+  }
+
+  &--wait {
+    color: red;
+  }
+
+  &--sending {
+    color: orange;
   }
 }

@@ -5,7 +5,9 @@ export default Controller.extend({
   actions: {
     revise() {
       const user = get(this, 'model');
-      user.save();
+      user.save().then(() => {
+        this.notifications.success('updated successfully');
+      });
     }
   }
 })
