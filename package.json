@@ -1,6 +1,6 @@
 {
   "name": "hajs-front",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": true,
   "description": "Small description for hajs-front goes here",
   "repository": "",
@@ -46,6 +46,7 @@
     "ember-cp-validations": "^4.0.0-beta.1",
     "ember-data": "~3.4.0",
     "ember-export-application-global": "^2.0.0",
+    "ember-keyboard": "^4.0.0",
     "ember-load-initializers": "^1.1.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-moment": "^7.7.0",

@@ -5,36 +5,35 @@
     {{place.name}}
   </h1>
 
-  {{link-to "Back" "auth.places"}}
+  <div class="place__nav text-center">
+    {{fa-icon "chevron-left" size="2x" click=(action "previousMonth")}}
+    <div class="month"> {{readableMonth}} </div>
+    {{fa-icon "chevron-right" size="2x" click=(action "nextMonth")}}
+  </div>
 
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Członkowie</th>
-        <th scope="col">Czynsz</th>
-        <th scope="col">Status</th>
+        <th scope="col">Inhabitants</th>
+        <th scope="col">Rent</th>
       </tr>
     </thead>
     <tbody>
       {{#each place.users as |user|}}
         <tr>
           <th>{{user.username}}</th>
-
           {{rent-cell rent=(get-user-rent user.rents month)
                       change=(action "changeStatus")}}
-
-          <td></td>
         </tr>
       {{/each}}
       <tr>
         <th scope="row">{{place.users.length}}</th>
-        <td>2500zł</td>
-        <td></td>
+        <td>{{place.rent}}zł</td>
       </tr>
     </tbody>
   </table>
 
   {{#bs-button type="outline-primary" onClick=(action "generateRent")}}
-    Generuj czynsz!
+    Generate rent!
   {{/bs-button}}
 </div>

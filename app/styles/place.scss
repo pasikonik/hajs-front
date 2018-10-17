@@ -4,8 +4,11 @@
     flex-direction: column;
   }
 
-  &__user {
-
+  &__nav {
+    align-items: center;
+    display: flex;
+    font-size: 22px;
+    justify-content: center;
   }
 }
 
