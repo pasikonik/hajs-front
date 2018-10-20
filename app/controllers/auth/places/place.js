@@ -18,6 +18,9 @@ export default Controller.extend(EKMixin, {
   nextMonthEvent: on(keyDown('ArrowRight'), function() {
     this.send('nextMonth');
   }),
+  currentMonthEvent: on(keyDown('ArrowDown'), function() {
+    this.send('currentMonth');
+  }),
 
   place: alias('model'),
   momentMonth: computed('month', function() {
@@ -54,5 +57,8 @@ export default Controller.extend(EKMixin, {
       const previous = get(this, 'momentMonth').add('1', 'month');
       set(this, 'month', previous.format('MM YYYY'));
     },
+    currentMonth() {
+      set(this, 'month', moment().format('MM YYYY'));
+    }
   }
 })
