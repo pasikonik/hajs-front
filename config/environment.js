@@ -52,7 +52,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
+    ENV.apiUrl = 'http://vps628229.ovh.net:3000';
   }
 
   ENV['ember-simple-auth-token'] = {
