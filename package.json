@@ -1,6 +1,6 @@
 {
   "name": "hajs-front",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": true,
   "description": "Small description for hajs-front goes here",
   "repository": "",
@@ -64,6 +64,7 @@
     "sass": "^1.15.2"
   },
   "engines": {
-    "node": "6.* || 8.* || >= 10.*"
+    "node": ">= 10.14.2 <11",
+    "yarn": "^1.12.3"
   }
 }
