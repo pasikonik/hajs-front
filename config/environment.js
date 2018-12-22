@@ -52,7 +52,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.apiUrl = 'http://vps628229.ovh.net:3000';
+    ENV.apiUrl = 'http://hajsapp.pl';
   }
 
   ENV['ember-simple-auth-token'] = {
