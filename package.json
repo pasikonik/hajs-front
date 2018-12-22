@@ -2,8 +2,8 @@
   "name": "hajs-front",
   "version": "0.0.6",
   "private": true,
-  "description": "Small description for hajs-front goes here",
-  "repository": "",
+  "description": "Small application for rent payment management",
+  "repository": "github:pasikonik/hajsapp-front",
   "license": "MIT",
   "author": "Michał Olejniczak",
   "directories": {
