@@ -11,10 +11,14 @@ module.exports = function(deployTarget) {
     ENV.build.environment = 'production';
 
     ENV['simply-ssh'] = {
-      host: process.env.SSH_HOST,
-      port: process.env.SSH_PORT,
-      username: process.env.SSH_USER,
-      privateKey: process.env.SSH_KEY
+      connection: {
+        host: process.env.SSH_HOST,
+        port: process.env.SSH_PORT,
+        username: process.env.SSH_USER,
+        privateKey: process.env.SSH_KEY
+      },
+      dir: '/var/www/hajsapp-front',
+      keep: 5
     }
   }
 

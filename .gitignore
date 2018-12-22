@@ -22,5 +22,5 @@
 /bower.json.ember-try
 /package.json.ember-try
 
-.env
-.env.deploy.production
+.env.development
+.env.deploy.*
