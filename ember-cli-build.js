@@ -4,6 +4,10 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
+    SRI: {
+      crossorigin: 'anonymous'
+    },
+
     'ember-bootstrap': {
       'bootstrapVersion': 4,
       'importBootstrapFont': false,
