@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import { get, computed } from '@ember/object'
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const Validations = buildValidations({
@@ -10,9 +9,5 @@ const Validations = buildValidations({
 export default DS.Model.extend(Validations, {
   name: DS.attr('string'),
   rent: DS.attr('number'),
-  users: DS.hasMany('user'),
-
-  people: computed('users.[]', function() {
-    return get(this, 'users').length;
-  })
+  users: DS.hasMany('user')
 });

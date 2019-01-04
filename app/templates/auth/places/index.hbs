@@ -15,7 +15,7 @@
     {{#each model as |place|}}
       <div class="places__table-cell">{{place.name}}</div>
       <div class="places__table-cell">{{place.rent}} PLN</div>
-      <div class="places__table-cell">{{place.people}}</div>
+      <div class="places__table-cell">{{place.users.length}}</div>
       <div class="places__table-cell">
         {{#bs-button onClick=(action "joinToPlace" place)}}
           Join

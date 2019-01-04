@@ -7,10 +7,7 @@ export default Controller.extend({
 
   actions: {
     async joinToPlace(place) {
-      const user0 = get(this, 'currentUser.user');
-
-      const user = await this.store.findRecord('user', get(user0, 'id'));
-
+      const user = get(this, 'currentUser.user');
       set(user, 'place', place);
       await user.save();
       this.transitionToRoute('auth.places.place', place);
