@@ -1,5 +1,6 @@
 import DS from 'ember-data';
 import { computed, get } from '@ember/object';
+import { filter, filterBy } from '@ember/object/computed'
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const Validations = buildValidations({
@@ -24,13 +25,19 @@ export default DS.Model.extend(Validations, {
   place: DS.belongsTo('place'),
   payments: DS.hasMany('payment'),
 
+  outstandingPayments: filterBy('payments', 'status', 'wait'),
+  debt: computed('outstandingPayments.[]', function() {
+    const debts = get(this, 'outstandingPayments');
+    const values = debts.map(payment => get(payment, 'amount'));
+    return values.reduce((a, b) => a + b, 0);
+  }),
   isRenter: computed('place', function() {
     return !!get(this.place, 'id');
   }),
-  bills: computed.filter('payments', function(payment) {
+  bills: filter('payments', function(payment) {
     return !!get(payment.bill, 'id');
   }),
-  rents: computed.filter('payments', function(payment) {
+  rents: filter('payments', function(payment) {
     return !get(payment.bill, 'id');
   })
 });

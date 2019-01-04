@@ -1,3 +1,11 @@
 <div class="text-center">
   {{fa-icon "balance-scale" size="4x"}}
+
+  {{#if currentUser.isPayer}}
+    <h2>Payer</h2>
+  {{else}}
+    <h2 class={{if (gt currentUser.debt 0) 'red' 'green'}}>
+      {{currentUser.debt}}zł
+    </h2>
+  {{/if}}
 </div>

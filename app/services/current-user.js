@@ -16,6 +16,7 @@ export default Service.extend({
   placeId: alias('user.place.id'),
   isPayer: alias('user.payer'),
   isRenter: alias('user.isRenter'),
+  debt: alias('user.debt'),
 
   async load() {
     const token = get(this, 'session.data.authenticated.token');
