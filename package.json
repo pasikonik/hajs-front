@@ -65,11 +65,11 @@
     "liquid-fire": "^0.29.3",
     "liquid-tether": "^2.0.7",
     "loader.js": "^4.7.0",
-    "qunit-dom": "^0.8.3",
+    "qunit-dom": "^0.8.4",
     "sass": "^1.15.2"
   },
   "engines": {
-    "node": ">= 10.14.2 <11",
+    "node": ">= 10.15.0 <11",
     "yarn": "^1.12.3"
   }
 }
