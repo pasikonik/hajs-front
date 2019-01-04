@@ -8,6 +8,7 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend(EKMixin, {
   ajax: service(),
+  currentUser: service(),
 
   activateKeyboard: on('init', function() {
     set(this, 'keyboardActivated', true);

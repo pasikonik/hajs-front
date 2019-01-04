@@ -4,7 +4,7 @@ import { get } from '@ember/object';
 export default Controller.extend({
   actions: {
     create() {
-      const place = get(this, 'model').save().then(() => {
+      get(this, 'model').save().then((place) => {
         this.transitionToRoute('auth.places.place', place.id);
       });
     }

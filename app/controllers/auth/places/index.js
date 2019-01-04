@@ -6,14 +6,14 @@ export default Controller.extend({
   currentUser: service(),
 
   actions: {
-    show(place) {
-      this.transitionToRoute('auth.places.place', place);
-    },
+    async joinToPlace(place) {
+      const user0 = get(this, 'currentUser.user');
 
-    joinToPlace(place) {
-      const user = get(this, 'currentUser.user');
+      const user = await this.store.findRecord('user', get(user0, 'id'));
+
       set(user, 'place', place);
-      user.save();
+      await user.save();
+      this.transitionToRoute('auth.places.place', place);
     }
   }
 })

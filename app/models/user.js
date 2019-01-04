@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import { computed, get } from '@ember/object';
+import { computed } from '@ember/object';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const Validations = buildValidations({
@@ -20,12 +20,10 @@ export default DS.Model.extend(Validations, {
   password: DS.attr('string'),
   ban: DS.attr('string'),
   maxPay: DS.attr('number'),
-  place: DS.belongsTo('place', { inverse: 'users' }),
+  payer: DS.attr('boolean'),
+  place: DS.belongsTo('place'),
   payments: DS.hasMany('payment'),
 
-  isPayer: computed('place', function() {
-    return get(this, 'email') === get(this, 'place.payer.email');
-  }),
   isRenter: computed('place', function() {
     return !!this.place.id;
   }),

@@ -14,7 +14,8 @@ export default Service.extend({
   email: alias('user.email'),
   username: alias('user.username'),
   placeId: alias('user.place.id'),
-  isPayer: alias('user.isPayer'),
+  isPayer: alias('user.payer'),
+  isRenter: alias('user.isRenter'),
 
   async load() {
     const token = get(this, 'session.data.authenticated.token');
@@ -30,7 +31,7 @@ export default Service.extend({
   },
 
   _getUserIdFromToken(token) {
-    const jwt = new JWT();
+    const jwt = JWT.create();
     const tokenData = jwt.getTokenData(token);
     return tokenData['user_id'];
   }

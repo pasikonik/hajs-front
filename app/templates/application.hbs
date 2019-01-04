@@ -17,9 +17,11 @@
               Flat
             {{/nav.link-to}}
           {{/nav.item}}
-          {{#nav.item}}
-            {{#nav.link-to "auth.places"}}Places{{/nav.link-to}}
-          {{/nav.item}}
+          {{#unless currentUser.isRenter}}
+            {{#nav.item}}
+              {{#nav.link-to "auth.places"}}Places{{/nav.link-to}}
+            {{/nav.item}}
+          {{/unless}}
         {{else}}
           {{#nav.item}}
             {{#nav.link-to "login"}}Login{{/nav.link-to}}

@@ -33,7 +33,9 @@
     </tbody>
   </table>
 
-  {{#bs-button type="outline-primary" onClick=(action "generateRent")}}
-    Generate rent!
-  {{/bs-button}}
+  {{#if currentUser.user.payer}}
+    {{#bs-button type="outline-primary" onClick=(action "generateRent")}}
+      Generate rent!
+    {{/bs-button}}
+  {{/if}}
 </div>

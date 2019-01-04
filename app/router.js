@@ -12,8 +12,8 @@ Router.map(function() {
   this.route('auth', { path: '' }, function() {
     this.route('settings');
     this.route('places', function() {
-      this.route('place', { path: ':place_id' });
       this.route('new');
+      this.route('place', { path: ':place_id' });
     });
   })
 });
