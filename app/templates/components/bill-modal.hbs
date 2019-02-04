@@ -1,5 +1,10 @@
-{{#bs-modal-simple title="Create new bill"}}
-  {{#bs-form model=newBill onSubmit=(action "createBill")}}
+{{#bs-modal-simple title="Create new bill"
+                   size="sm"
+                   submitTitle="Create"
+                   onSubmit=(action "createBill")
+                   closeTitle="Close"
+                   closeButton=false}}
+  {{#bs-form model=newBill as |form|}}
     {{form.element property="name" controlType="text" label="Name"}}
     {{form.element property="amount" controlType="number" label="Amount"}}
   {{/bs-form}}
