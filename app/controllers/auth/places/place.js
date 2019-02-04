@@ -1,7 +1,7 @@
 import moment from 'moment';
 import Controller from '@ember/controller';
 import { on } from '@ember/object/evented';
-import { computed, get, set } from '@ember/object';
+import { computed, get, set, setProperties } from '@ember/object';
 import { alias } from '@ember/object/computed';
 import { EKMixin, keyDown } from 'ember-keyboard';
 import { inject as service } from '@ember/service';
@@ -36,6 +36,14 @@ export default Controller.extend(EKMixin, {
     return this.momentMonth.format('MMMM YYYY').capitalize();
   }),
 
+  init() {
+    this._super(...arguments);
+    setProperties(this, {
+      billModalOpen: false,
+      newBill: this.store.createRecord('bill')
+    });
+  },
+
   actions: {
     async generateRent() {
       await this.ajax.post('/payments/create_rent', {
@@ -46,6 +54,14 @@ export default Controller.extend(EKMixin, {
       })
       this.flashMessages.success('generated successfully');
       this.place.reload();
+    },
+    openBillModal() {
+      this.toggleProperty('billModalOpen');
+    },
+    createBill(bill) {
+      bill.save().then(() => {
+        this.flashMessages.success('bill added successfully')
+      });
     },
     changeStatus(payment) {
       payment.changeStatus();

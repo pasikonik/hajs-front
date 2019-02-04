@@ -6,9 +6,9 @@
   </h1>
 
   <div class="place__nav text-center">
-    {{fa-icon "chevron-left" click=(action "previousMonth")}}
+    {{fa-icon "chevron-left" class="place__nav-arrow" click=(action "previousMonth")}}
     <div class="month"> {{readableMonth}} </div>
-    {{fa-icon "chevron-right" click=(action "nextMonth")}}
+    {{fa-icon "chevron-right" class="place__nav-arrow" click=(action "nextMonth")}}
   </div>
 
   <table class="table">
@@ -37,5 +37,13 @@
     {{#bs-button type="outline-primary" onClick=(action "generateRent")}}
       Generate rent!
     {{/bs-button}}
+
+    {{#bs-button type="outline-warning" onClick=(action "openBillModal")}}
+      Create bill
+    {{/bs-button}}
   {{/if}}
 </div>
+
+{{#if billModalOpen}}
+  {{bill-modal newBill=newBill}}
+{{/if}}

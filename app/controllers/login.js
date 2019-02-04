@@ -1,10 +1,6 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import {
-  get,
-  set,
-  getProperties
-} from '@ember/object'
+import { get, getProperties } from '@ember/object'
 
 export default Controller.extend({
   session: service(),
