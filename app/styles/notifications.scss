@@ -1,0 +1,17 @@
+.alert {
+  left: 100px;
+  opacity: 0;
+  position: relative;
+
+  transition: all 700ms cubic-bezier(.68, -.55, .265, 1.55);
+
+  &.active {
+    left: 0;
+    opacity: 1;
+
+    &.exiting {
+      left: 100px;
+      opacity: 0;
+    }
+  }
+}

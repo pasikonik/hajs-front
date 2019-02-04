@@ -8,17 +8,17 @@ import {
 
 export default Controller.extend({
   session: service(),
-
-  errorMessage: '',
+  flashMessages: service(),
 
   actions: {
     async authenticate() {
       const credentials = getProperties(this, 'identification', 'password');
       try {
         await get(this, 'session').authenticate('authenticator:jwt', credentials)
-        get(this, 'notifications').success('logged in');
+        this.flashMessages.success('logged in');
       } catch (e) {
-        set(this, 'errorMessage', e.error);
+        const error = e.json.error.auth[0];
+        this.flashMessages.danger(error);
       }
     }
   }

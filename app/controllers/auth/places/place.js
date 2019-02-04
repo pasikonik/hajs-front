@@ -9,6 +9,7 @@ import { inject as service } from '@ember/service';
 export default Controller.extend(EKMixin, {
   ajax: service(),
   currentUser: service(),
+  flashMessages: service(),
 
   activateKeyboard: on('init', function() {
     set(this, 'keyboardActivated', true);
@@ -43,7 +44,7 @@ export default Controller.extend(EKMixin, {
           month: this.month
         }
       })
-      this.notifications.success('generated successfully');
+      this.flashMessages.success('generated successfully');
       this.place.reload();
     },
     changeStatus(payment) {

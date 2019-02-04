@@ -6,6 +6,9 @@ module.exports = function(environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
+    flashMessageDefaults: {
+      extendedTimeout: 900
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -22,12 +25,6 @@ module.exports = function(environment) {
       // when it is created
     }
   };
-
-  ENV['ember-cli-notifications'] = {
-    includeFontAwesome: true,
-    autoClear: true,
-    clearDuration: 3000
-  }
 
   if (environment === 'development') {
     ENV.apiUrl = 'http://localhost:3000';
