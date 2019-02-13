@@ -1,9 +1,7 @@
 <div class="place text-center">
   {{fa-icon "home" class="justify-content-center" size="4x"}}
 
-  <h1>
-    {{place.name}}
-  </h1>
+  <h1> {{place.name}} </h1>
 
   <div class="place__nav text-center">
     {{fa-icon "chevron-left" class="place__nav-arrow" click=(action "previousMonth")}}
@@ -34,16 +32,17 @@
   </table>
 
   {{#if currentUser.user.payer}}
-    {{#bs-button type="outline-primary" onClick=(action "generateRent")}}
+    {{#bs-button onClick=(action "generateRent") type="outline-primary" }}
       Generate rent!
     {{/bs-button}}
 
-    {{#bs-button type="outline-warning" onClick=(action "openBillModal")}}
+    {{#bs-button onClick=(action "openBillModal") type="outline-warning"}}
       Create bill
     {{/bs-button}}
   {{/if}}
 </div>
 
 {{#if billModalOpen}}
-  {{bill-modal newBill=newBill}}
+  {{bill-modal newBill=newBill
+               createBill=(action "createBill")}}
 {{/if}}
