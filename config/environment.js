@@ -6,9 +6,6 @@ module.exports = function(environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
-    flashMessageDefaults: {
-      extendedTimeout: 900
-    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -25,6 +22,11 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+
+  ENV['flashMessageDefaults'] = {
+    extendedTimeout: 1000,
+    showProgress: true,
+  }
 
   if (environment === 'development') {
     ENV.apiUrl = 'http://localhost:3000';

@@ -35,6 +35,11 @@ export default Controller.extend(EKMixin, {
   readableMonth: computed('month', function() {
     return this.momentMonth.format('MMMM YYYY').capitalize();
   }),
+  billsForMonth: computed('month', function() {
+    return this.place.bills.filter((bill) => {
+      return moment(bill.createdAt).format('MM YYYY') === this.month;
+    });
+  }),
 
   init() {
     this._super(...arguments);
@@ -59,8 +64,11 @@ export default Controller.extend(EKMixin, {
       this.toggleProperty('billModalOpen');
     },
     createBill(bill) {
+      set(bill, 'place', this.place);
       bill.save().then(() => {
-        this.flashMessages.success('bill added successfully')
+        set(this, 'newBill', this.store.createRecord('bill'));
+        set(this, 'billModalOpen', false);
+        this.flashMessages.success('bill added successfully');
       });
     },
     changeStatus(payment) {

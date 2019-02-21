@@ -22,6 +22,7 @@ export default DS.Model.extend(Validations, {
   ban: DS.attr('string'),
   maxPay: DS.attr('number'),
   payer: DS.attr('boolean'),
+
   place: DS.belongsTo('place'),
   payments: DS.hasMany('payment'),
 

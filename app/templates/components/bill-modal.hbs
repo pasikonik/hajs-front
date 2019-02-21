@@ -1,13 +1,14 @@
-{{#bs-modal-simple title="Create new bill"
-                   size="sm"
-                   fade=false
-                   position="center"
-                   submitTitle="Create"
-                   onSubmit=(action "createBill")
-                   closeTitle="Close"
-                   closeButton=false}}
-  {{#bs-form model=newBill as |form|}}
-    {{form.element property="name" controlType="text" label="Name"}}
-    {{form.element property="amount" controlType="number" label="Amount"}}
-  {{/bs-form}}
-{{/bs-modal-simple}}
+{{#bs-modal size="sm"
+            fade=false
+            position="center" as |modal|}}
+  {{#modal.header}}
+    <h4>Create a new bill</h4>
+  {{/modal.header}}
+  {{#modal.body}}
+    {{#bs-form model=newBill onSubmit=(action "createBill") as |form|}}
+      {{form.element property="name" controlType="text" label="Name"}}
+      {{form.element property="amount" controlType="number" label="Amount"}}
+      {{bs-button defaultText="Submit" type="primary" buttonType="submit" class="float-right"}}
+    {{/bs-form}}
+  {{/modal.body}}
+{{/bs-modal}}

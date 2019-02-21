@@ -14,6 +14,9 @@
       <tr>
         <th scope="col">Inhabitants</th>
         <th scope="col">Rent</th>
+        {{#each billsForMonth as |bill|}}
+          <th scope="col">{{bill.name}}</th>
+        {{/each}}
       </tr>
     </thead>
     <tbody>
@@ -22,6 +25,8 @@
           <th>{{user.username}}</th>
           {{rent-cell rent=(get-user-rent user.rents month)
                       change=(action "changeStatus")}}
+
+          <td>1zł</td>
         </tr>
       {{/each}}
       <tr>

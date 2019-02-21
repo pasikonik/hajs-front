@@ -9,5 +9,7 @@ const Validations = buildValidations({
 export default DS.Model.extend(Validations, {
   name: DS.attr('string'),
   rent: DS.attr('number'),
-  users: DS.hasMany('user')
+
+  users: DS.hasMany('user'),
+  bills: DS.hasMany('bill')
 });
