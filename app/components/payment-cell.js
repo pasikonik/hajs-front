@@ -4,6 +4,6 @@ export default Component.extend({
   tagName: 'td',
 
   click() {
-    this.change(this.rent);
+    this.change(this.payment);
   }
 });

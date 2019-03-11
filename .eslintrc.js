@@ -14,9 +14,6 @@ module.exports = {
   env: {
     browser: true
   },
-  rules: {
-    'ember/use-ember-get-and-set': 1
-  },
   overrides: [
     // node files
     {

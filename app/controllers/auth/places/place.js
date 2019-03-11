@@ -73,7 +73,6 @@ export default Controller.extend(EKMixin, {
     },
     changeStatus(payment) {
       payment.changeStatus();
-      this.toggleProperty('changed');
     },
     previousMonth() {
       const previous = get(this, 'momentMonth').subtract('1', 'month');

@@ -23,15 +23,21 @@
       {{#each place.users as |user|}}
         <tr>
           <th>{{user.username}}</th>
-          {{rent-cell rent=(get-user-rent user.rents month)
-                      change=(action "changeStatus")}}
+          {{payment-cell payment=(user-rent-payment user.rents month)
+                         change=(action "changeStatus")}}
 
-          <td>1zł</td>
+          {{#each billsForMonth as |bill|}}
+            {{payment-cell payment=(user-bill-payment bill.payments user)
+                           change=(action "changeStatus")}}
+          {{/each}}
         </tr>
       {{/each}}
       <tr>
         <th scope="row">{{place.users.length}}</th>
         <td>{{place.rent}}zł</td>
+        {{#each billsForMonth as |bill|}}
+          <td scope="col">{{bill.amount}}</td>
+        {{/each}}
       </tr>
     </tbody>
   </table>
