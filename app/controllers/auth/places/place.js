@@ -1,28 +1,15 @@
-import moment from 'moment';
 import Controller from '@ember/controller';
-import { on } from '@ember/object/evented';
-import { computed, get, set, setProperties } from '@ember/object';
+import NavigationMixin from '../../../mixins/navigation';
+import moment from 'moment';
+import { computed } from '@ember/object';
 import { alias } from '@ember/object/computed';
-import { EKMixin, keyDown } from 'ember-keyboard';
+
 import { inject as service } from '@ember/service';
 
-export default Controller.extend(EKMixin, {
+export default Controller.extend(NavigationMixin, {
   ajax: service(),
   currentUser: service(),
   flashMessages: service(),
-
-  activateKeyboard: on('init', function() {
-    set(this, 'keyboardActivated', true);
-  }),
-  previousMonthEvent: on(keyDown('ArrowLeft'), function() {
-    this.send('previousMonth');
-  }),
-  nextMonthEvent: on(keyDown('ArrowRight'), function() {
-    this.send('nextMonth');
-  }),
-  currentMonthEvent: on(keyDown('ArrowDown'), function() {
-    this.send('currentMonth');
-  }),
 
   place: alias('model'),
   momentMonth: computed('month', function() {
@@ -30,12 +17,12 @@ export default Controller.extend(EKMixin, {
     return moment(`${year}-${month}-01`);
   }),
   isPayer: computed('place.payer', function() {
-    return get(this, 'currentUser.email') === get(this, 'place.payer.email');
+    return this.get('currentUser.email') === this.get('place.payer.email');
   }),
   readableMonth: computed('month', function() {
     return this.momentMonth.format('MMMM YYYY').capitalize();
   }),
-  billsForMonth: computed('month', function() {
+  billsForMonth: computed('place.bills.[]', 'month', function() {
     return this.place.bills.filter((bill) => {
       return moment(bill.createdAt).format('MM YYYY') === this.month;
     });
@@ -43,7 +30,7 @@ export default Controller.extend(EKMixin, {
 
   init() {
     this._super(...arguments);
-    setProperties(this, {
+    this.setProperties({
       billModalOpen: false,
       newBill: this.store.createRecord('bill')
     });
@@ -51,23 +38,23 @@ export default Controller.extend(EKMixin, {
 
   actions: {
     async generateRent() {
-      await this.ajax.post('/payments/create_rent', {
+      const rents = await this.ajax.post('/payments/create_rent', {
         data: {
           place_id: this.place.id,
           month: this.month
         }
-      })
+      });
+      this.store.pushPayload(rents);
       this.flashMessages.success('generated successfully');
-      this.place.reload();
     },
     openBillModal() {
       this.toggleProperty('billModalOpen');
     },
     createBill(bill) {
-      set(bill, 'place', this.place);
+      bill.set('place', this.place);
       bill.save().then(() => {
-        set(this, 'newBill', this.store.createRecord('bill'));
-        set(this, 'billModalOpen', false);
+        this.set('newBill', this.store.createRecord('bill'));
+        this.set('billModalOpen', false);
         this.flashMessages.success('bill added successfully');
       });
     },
@@ -75,15 +62,15 @@ export default Controller.extend(EKMixin, {
       payment.changeStatus();
     },
     previousMonth() {
-      const previous = get(this, 'momentMonth').subtract('1', 'month');
-      set(this, 'month', previous.format('MM YYYY'));
+      const previous = this.get('momentMonth').subtract('1', 'month');
+      this.set('month', previous.format('MM YYYY'));
     },
     nextMonth() {
-      const previous = get(this, 'momentMonth').add('1', 'month');
-      set(this, 'month', previous.format('MM YYYY'));
+      const previous = this.get('momentMonth').add('1', 'month');
+      this.set('month', previous.format('MM YYYY'));
     },
     currentMonth() {
-      set(this, 'month', moment().format('MM YYYY'));
+      this.set('month', moment().format('MM YYYY'));
     }
   }
 })

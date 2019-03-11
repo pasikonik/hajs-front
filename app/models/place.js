@@ -11,5 +11,6 @@ export default DS.Model.extend(Validations, {
   rent: DS.attr('number'),
 
   users: DS.hasMany('user'),
-  bills: DS.hasMany('bill')
+  bills: DS.hasMany('bill'),
+  payments: DS.hasMany('payment')
 });
