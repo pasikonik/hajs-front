@@ -2,7 +2,12 @@
   {{fa-icon "balance-scale" size="4x"}}
 
   {{#if currentUser.isPayer}}
-    <h2>Payer</h2>
+
+    Counter: {{dwellers.length}}
+    {{#each dwellers as |dweller|}}
+      {{dweller.username}}
+    {{/each}}
+
   {{else}}
     <h2 class={{if (gt currentUser.debt 0) "red" "green"}}>
       {{currentUser.debt}}zł
