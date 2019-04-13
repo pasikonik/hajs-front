@@ -6,7 +6,7 @@ The application to manage rent payments for apartment in group of friends
 
 | ember | ember-data | ember-cli | node    | yarn   |
 |-------|------------|-----------|---------|--------|
-| 3.8.0 | 3.8.0      | 3.8.0     | 10.15.1 | 1.13.0 |
+| 3.9.1 | 3.9.0      | 3.9.0     | 11.14.0 | 1.15.2 |
 
 ## Backend part
 
