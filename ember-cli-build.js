@@ -20,6 +20,12 @@ module.exports = function(defaults) {
           collapse_vars: false
         }
       }
+    },
+
+    'stylelint': {
+      linterConfig: {
+        syntax: 'scss'
+      }
     }
   });
 
