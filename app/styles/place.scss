@@ -21,14 +21,14 @@
   cursor: pointer;
 
   &--paid {
-    color: green;
+    color: $green;
   }
 
   &--wait {
-    color: red;
+    color: $red;
   }
 
   &--sending {
-    color: orange;
+    color: $orange;
   }
 }
