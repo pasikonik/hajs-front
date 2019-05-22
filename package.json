@@ -75,7 +75,7 @@
     "stylelint-config-standard": "^18.2.0"
   },
   "engines": {
-    "node": "^11.14.0",
-    "yarn": "^1.15.2"
+    "node": "^12.3.0",
+    "yarn": "^1.16.0"
   }
 }
