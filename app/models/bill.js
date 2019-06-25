@@ -1,10 +1,11 @@
 import DS from 'ember-data';
+const { attr, belongsTo, hasMany } = DS;
 
-export default DS.Model.extend({
-  name: DS.attr('string'),
-  amount: DS.attr('number'),
-  createdAt: DS.attr('date'),
+export default class Bill extends DS.Model {
+  @attr('string') name
+  @attr('number') amount
+  @attr('date') createdAt
 
-  place: DS.belongsTo('place'),
-  payments: DS.hasMany('payment')
-});
+  @belongsTo('place') place
+  @hasMany('payment') payments
+}

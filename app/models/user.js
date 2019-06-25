@@ -3,6 +3,8 @@ import { computed, get } from '@ember/object';
 import { filter, filterBy } from '@ember/object/computed'
 import { validator, buildValidations } from 'ember-cp-validations';
 
+const { attr, belongsTo, hasMany } = DS;
+
 const Validations = buildValidations({
   username: validator('presence', true),
   password: [
@@ -15,30 +17,39 @@ const Validations = buildValidations({
   ]
 });
 
-export default DS.Model.extend(Validations, {
-  email: DS.attr('string'),
-  username: DS.attr('string'),
-  password: DS.attr('string'),
-  ban: DS.attr('string'),
-  maxPay: DS.attr('number'),
-  payer: DS.attr('boolean'),
+export default class User extends DS.Model.extend(Validations) {
+  @attr('string') email
+  @attr('string') username
+  @attr('string') password
+  @attr('string') ban
+  @attr('number') maxPay
+  @attr('boolean') payer
 
-  place: DS.belongsTo('place'),
-  payments: DS.hasMany('payment'),
+  @belongsTo('place') place
+  @hasMany('payment') payments
 
-  outstandingPayments: filterBy('payments', 'status', 'wait'),
-  debt: computed('outstandingPayments.[]', function() {
+  @filterBy('payments', 'status', 'wait')
+  outstandingPayments
+
+  @computed('outstandingPayments.[]')
+  get debt() {
     const debts = get(this, 'outstandingPayments');
     const values = debts.map(payment => get(payment, 'amount'));
     return values.reduce((a, b) => a + b, 0);
-  }),
-  isRenter: computed('place', function() {
+  }
+
+  @computed('place')
+  get isRenter() {
     return !!get(this.place, 'id');
-  }),
-  bills: filter('payments', function(payment) {
+  }
+
+  @filter('payments')
+  bills(payment) {
     return !!get(payment.bill, 'id');
-  }),
-  rents: filter('payments', function(payment) {
+  }
+
+  @filter('payments')
+  rents(payment) {
     return !get(payment.bill, 'id');
-  })
-});
+  }
+}

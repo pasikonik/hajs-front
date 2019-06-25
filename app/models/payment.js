@@ -3,16 +3,18 @@ import { get, set } from '@ember/object'
 import { isPresent } from '@ember/utils'
 import { inject as service } from '@ember/service';
 
-export default DS.Model.extend({
-  currentUser: service(),
+const { attr, belongsTo } = DS;
 
-  amount: DS.attr('number'),
-  status: DS.attr('string'),
-  createdAt: DS.attr('date'),
+export default class Payment extends DS.Model {
+  @service currentUser
 
-  user: DS.belongsTo('user'),
-  bill: DS.belongsTo('bill'),
-  place: DS.belongsTo('place'),
+  @attr('number') amount
+  @attr('string') status
+  @attr('date') createdAt
+
+  @belongsTo('user') user
+  @belongsTo('bill') bill
+  @belongsTo('place') place
 
   changeStatus() {
     const doer = get(this, 'currentUser');
@@ -26,7 +28,7 @@ export default DS.Model.extend({
     if (isPresent(this.changedAttributes().status)) {
       this.save();
     }
-  },
+  }
 
   _changeForTenant() {
     if (this.status === 'wait') {
@@ -34,7 +36,7 @@ export default DS.Model.extend({
     } else if (this.status === 'sending') {
       set(this, 'status', 'wait')
     }
-  },
+  }
   _changeForPayer() {
     if (this.status === 'wait' || this.status === 'sending') {
       set(this, 'status', 'paid');
@@ -42,4 +44,4 @@ export default DS.Model.extend({
       set(this, 'status', 'wait')
     }
   }
-});
+}
