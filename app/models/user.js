@@ -1,9 +1,7 @@
-import DS from 'ember-data';
+import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 import { computed, get } from '@ember/object';
 import { filter, filterBy } from '@ember/object/computed'
 import { validator, buildValidations } from 'ember-cp-validations';
-
-const { attr, belongsTo, hasMany } = DS;
 
 const Validations = buildValidations({
   username: validator('presence', true),
@@ -17,7 +15,7 @@ const Validations = buildValidations({
   ]
 });
 
-export default class User extends DS.Model.extend(Validations) {
+export default class User extends Model.extend(Validations) {
   @attr('string') email
   @attr('string') username
   @attr('string') password
@@ -43,13 +41,9 @@ export default class User extends DS.Model.extend(Validations) {
     return !!get(this.place, 'id');
   }
 
-  @filter('payments')
-  bills(payment) {
-    return !!get(payment.bill, 'id');
-  }
+  @filter('payments', payment => !!get(payment.bill, 'id'))
+  bills
 
-  @filter('payments')
-  rents(payment) {
-    return !get(payment.bill, 'id');
-  }
+  @filter('payments', payment => !get(payment.bill, 'id'))
+  rents
 }

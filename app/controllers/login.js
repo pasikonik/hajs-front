@@ -1,21 +1,19 @@
 import Controller from '@ember/controller';
+import { action } from '@ember/object'
 import { inject as service } from '@ember/service';
-import { get, getProperties } from '@ember/object'
 
-export default Controller.extend({
-  session: service(),
-  flashMessages: service(),
+export default class Login extends Controller {
+  @service session
+  @service flashMessages
 
-  actions: {
-    async authenticate() {
-      const credentials = getProperties(this, 'identification', 'password');
-      try {
-        await get(this, 'session').authenticate('authenticator:jwt', credentials)
-        this.flashMessages.success('logged in');
-      } catch (e) {
-        const error = e.json.error.auth[0];
-        this.flashMessages.danger(error);
-      }
+  @action
+  async authenticate() {
+    const credentials = this.getProperties('identification', 'password');
+    try {
+      await this.session.authenticate('authenticator:jwt', credentials)
+      this.flashMessages.success('logged in');
+    } catch ({ json: { error: { auth } } }) {
+      this.flashMessages.danger(auth[0]);
     }
   }
-});
+}

@@ -1,4 +1,4 @@
-{{#bs-navbar as |navbar|}}
+<BsNavbar as |navbar|>
   <div class="container">
     {{navbar.toggle}}
     {{svg-jar "coin-stack-2" class="logo"}}
@@ -6,61 +6,61 @@
       <strong>Hajs</strong>App
       <span class="app-flag">alpha</span>
     </div>
-    {{#navbar.content}}
-      {{#navbar.nav as |nav|}}
+    <navbar.content>
+      <navbar.nav as |nav|>
         {{#if session.isAuthenticated}}
-          {{#nav.item}}
-            {{#nav.link-to "auth"}}Dashboard{{/nav.link-to}}
-          {{/nav.item}}
-          {{#nav.item}}
-            {{#nav.link-to "auth.places.place" currentUser.placeId}}
+          <nav.item>
+            <nav.item @linkTo="auth">Dashboard</nav.item>
+          </nav.item>
+          <nav.item>
+            <nav.item @linkTo={{array "auth.places.place" this.currentUser.placeId}}>
               Flat
-            {{/nav.link-to}}
-          {{/nav.item}}
+            </nav.item>
+          </nav.item>
           {{#unless currentUser.isRenter}}
-            {{#nav.item}}
-              {{#nav.link-to "auth.places"}}Places{{/nav.link-to}}
-            {{/nav.item}}
+            <nav.item>
+              <nav.item @linkTo="auth.places">Places</nav.item>
+            </nav.item>
           {{/unless}}
         {{else}}
-          {{#nav.item}}
-            {{#nav.link-to "login"}}Login{{/nav.link-to}}
-          {{/nav.item}}
-          {{#nav.item}}
-            {{#nav.link-to "registration"}}Registration{{/nav.link-to}}
-          {{/nav.item}}
+          <nav.item>
+            <nav.item @linkTo="login">Login</nav.item>
+          </nav.item>
+          <nav.item>
+            <nav.item @linkTo="registration">Registration</nav.item>
+          </nav.item>
         {{/if}}
-      {{/navbar.nav}}
+      </navbar.nav>
       {{#if session.isAuthenticated}}
-        {{#navbar.nav class="ml-auto" as |nav|}}
-          {{#nav.dropdown as |dd|}}
-            {{#dd.toggle}}
+        <navbar.nav class="ml-auto" as |nav|>
+          <nav.dropdown as |dd|>
+            <dd.toggle>
               {{fa-icon "child"}}
               {{currentUser.username}}
-            {{/dd.toggle}}
-            {{#dd.menu as |ddm|}}
-              {{#ddm.item}}
+            </dd.toggle>
+            <dd.menu as |ddm|>
+              <ddm.item>
                 {{#ddm.link-to "auth.settings"}}
                   {{fa-icon "cog"}}
                   Settings
                 {{/ddm.link-to}}
-              {{/ddm.item}}
-              {{#ddm.item}}
+              </ddm.item>
+              <ddm.item>
                 <a {{action "logout"}} href="#" class="dropdown-item">
                   {{fa-icon "sign-out-alt"}}
                   Logout
                 </a>
-              {{/ddm.item}}
-            {{/dd.menu}}
-          {{/nav.dropdown}}
-        {{/navbar.nav}}
+              </ddm.item>
+            </dd.menu>
+          </nav.dropdown>
+        </navbar.nav>
       {{/if}}
-    {{/navbar.content}}
+    </navbar.content>
   </div>
-{{/bs-navbar}}
+</BsNavbar>
 
 <div class="flash-container">
-  {{#each flashMessages.queue as |flash|}}
+  {{#each this.flashMessages.queue as |flash|}}
     {{flash-message flash=flash}}
   {{/each}}
 </div>
