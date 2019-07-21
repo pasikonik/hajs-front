@@ -1,9 +1,9 @@
 <div class="places">
   <h1 class="places__title text-center">
     Places
-    {{#link-to "auth.places.new"}}
-      {{fa-icon "plus"}}
-    {{/link-to}}
+    <LinkTo @route="auth.places.new">
+      <FaIcon @icon="plus" />
+    </LinkTo>
   </h1>
 
   <div class="places__table">
@@ -12,14 +12,14 @@
     <div class="places__table-cell places__table-cell--header">People</div>
     <div class="places__table-cell places__table-cell--header">Operation</div>
 
-    {{#each model as |place|}}
+    {{#each this.model as |place|}}
       <div class="places__table-cell">{{place.name}}</div>
       <div class="places__table-cell">{{place.rent}} PLN</div>
       <div class="places__table-cell">{{place.users.length}}</div>
       <div class="places__table-cell">
-        {{#bs-button onClick=(action "joinToPlace" place)}}
+        <BsButton @onClick={{action "joinToPlace" place}}>
           Join
-        {{/bs-button}}
+        </BsButton>
       </div>
     {{/each}}
   </div>

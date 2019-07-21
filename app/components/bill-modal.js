@@ -1,9 +1,9 @@
 import Component from '@ember/component';
+import { action } from '@ember/object';
 
-export default Component.extend({
-  actions: {
-    createBill() {
-      this.createBill(this.newBill);
-    }
+export default class BillModal extends Component {
+  @action
+  createBill(newBill) {
+    this.createNewBill(newBill);
   }
-});
+}

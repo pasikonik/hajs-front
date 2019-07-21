@@ -1,11 +1,9 @@
-import DS from 'ember-data';
+import Model, { attr, belongsTo } from '@ember-data/model';
 import { get, set } from '@ember/object'
 import { isPresent } from '@ember/utils'
 import { inject as service } from '@ember/service';
 
-const { attr, belongsTo } = DS;
-
-export default class Payment extends DS.Model {
+export default class Payment extends Model {
   @service currentUser
 
   @attr('number') amount

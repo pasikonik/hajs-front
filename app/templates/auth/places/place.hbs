@@ -1,12 +1,12 @@
 <div class="place text-center">
-  {{fa-icon "home" class="justify-content-center" size="4x"}}
+  <FaIcon @icon="home" class="justify-content-center" @size="4x" />
 
-  <h1> {{place.name}} </h1>
+  <h1> {{this.place.name}} </h1>
 
   <div class="place__nav text-center">
-    {{fa-icon "chevron-left" class="place__nav-arrow" click=(action "previousMonth")}}
-    <div class="month"> {{readableMonth}} </div>
-    {{fa-icon "chevron-right" class="place__nav-arrow" click=(action "nextMonth")}}
+    <FaIcon @icon="chevron-left" class="place__nav-arrow" @click={{action "previousMonth"}} />
+    <div class="month"> {{this.readableMonth}} </div>
+    <FaIcon @icon="chevron-right" class="place__nav-arrow" @click={{action "nextMonth"}} />
   </div>
 
   <table class="table">
@@ -14,46 +14,45 @@
       <tr>
         <th scope="col">Inhabitants</th>
         <th scope="col">Rent</th>
-        {{#each billsForMonth as |bill|}}
+        {{#each this.billsForMonth as |bill|}}
           <th scope="col">{{bill.name}}</th>
         {{/each}}
       </tr>
     </thead>
     <tbody>
-      {{#each place.users as |user|}}
+      {{#each this.place.users as |user|}}
         <tr>
           <th>{{user.username}}</th>
-          {{payment-cell payment=(user-rent-payment user.rents month)
-                         change=(action "changeStatus")}}
+          <PaymentCell @payment={{user-rent-payment user.rents this.month}}
+                       @change={{action "changeStatus"}} />
 
-          {{#each billsForMonth as |bill|}}
-            {{payment-cell payment=(user-bill-payment bill.payments user)
-                           change=(action "changeStatus")}}
+          {{#each this.billsForMonth as |bill|}}
+            <PaymentCell @payment={{user-bill-payment bill.payments user}}
+                         @change={{action "changeStatus"}} />
           {{/each}}
         </tr>
       {{/each}}
       <tr>
-        <th scope="row">{{place.users.length}}</th>
-        <td>{{place.rent}}zł</td>
-        {{#each billsForMonth as |bill|}}
+        <th scope="row">{{this.place.users.length}}</th>
+        <td>{{this.place.rent}}zł</td>
+        {{#each this.billsForMonth as |bill|}}
           <td scope="col">{{bill.amount}}zł</td>
         {{/each}}
       </tr>
     </tbody>
   </table>
 
-  {{#if currentUser.user.payer}}
-    {{#bs-button onClick=(action "generateRent") type="outline-primary" }}
+  {{#if this.currentUser.user.payer}}
+    <BsButton @onClick={{action "generateRent"}} @type="outline-primary">
       Generate rent!
-    {{/bs-button}}
-
-    {{#bs-button onClick=(action "openBillModal") type="outline-warning"}}
-      Create bill
-    {{/bs-button}}
+    </BsButton>
+    <BsButton @onClick={{action "openBillModal"}} @type="outline-warning">
+      Create Bill
+    </BsButton>
   {{/if}}
 </div>
 
-{{#if billModalOpen}}
-  {{bill-modal newBill=newBill
-               createBill=(action "createBill")}}
+{{#if this.billModalOpen}}
+  <BillModal @newBill={{this.newBill}}
+             @createNewBill={{action "createBill"}} />
 {{/if}}

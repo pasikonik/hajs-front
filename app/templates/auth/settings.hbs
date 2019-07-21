@@ -2,13 +2,13 @@
 
 <div class="form row justify-content-center">
   <div class="col-5">
-    {{#bs-form formLayout="vertical" model=model onSubmit=(action "revise") as |form|}}
-      {{form.element controlType="email" label="Email" property="email"}}
-      {{form.element controlType="username" label="Username" property="username"}}
-      {{form.element controlType="text" label="Bank Account Number" property="ban"}}
-      {{form.element controlType="number" label="Maximal payment" property="maxPay"}}
-      {{form.element controlType="password" label="Confirmation password" property="password"}}
-      {{bs-button defaultText="Update" type="outline-primary" block=true buttonType="submit"}}
-    {{/bs-form}}
+    <BsForm formLayout="vertical" @model={{this.model}} @onSubmit={{action "revise"}} as |form|>
+      <form.element @controlType="email" @label="Email" @property="email" />
+      <form.element @controlType="username" @label="Username" @property="username" />
+      <form.element @controlType="text" @label="Bank Account Number" @property="ban" />
+      <form.element @controlType="number" @label="Maximal payment" @property="maxPay" />
+      <form.element @controlType="password" @label="Confirmation password" @property="password" />
+      <BsButton @defaultText="Update" @type="outline-primary" @block={{true}} @buttonType="submit" />
+    </BsForm>
   </div>
 </div>

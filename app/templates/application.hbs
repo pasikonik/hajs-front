@@ -8,7 +8,7 @@
     </div>
     <navbar.content>
       <navbar.nav as |nav|>
-        {{#if session.isAuthenticated}}
+        {{#if this.session.isAuthenticated}}
           <nav.item>
             <nav.item @linkTo="auth">Dashboard</nav.item>
           </nav.item>
@@ -17,7 +17,7 @@
               Flat
             </nav.item>
           </nav.item>
-          {{#unless currentUser.isRenter}}
+          {{#unless this.currentUser.isRenter}}
             <nav.item>
               <nav.item @linkTo="auth.places">Places</nav.item>
             </nav.item>
@@ -31,23 +31,23 @@
           </nav.item>
         {{/if}}
       </navbar.nav>
-      {{#if session.isAuthenticated}}
+      {{#if this.session.isAuthenticated}}
         <navbar.nav class="ml-auto" as |nav|>
           <nav.dropdown as |dd|>
             <dd.toggle>
-              {{fa-icon "child"}}
-              {{currentUser.username}}
+              <FaIcon @icon="child" />
+              {{this.currentUser.username}}
             </dd.toggle>
             <dd.menu as |ddm|>
               <ddm.item>
                 {{#ddm.link-to "auth.settings"}}
-                  {{fa-icon "cog"}}
+                  <FaIcon @icon="cog" />
                   Settings
                 {{/ddm.link-to}}
               </ddm.item>
               <ddm.item>
                 <a {{action "logout"}} href="#" class="dropdown-item">
-                  {{fa-icon "sign-out-alt"}}
+                  <FaIcon @icon="sign-out-alt" />
                   Logout
                 </a>
               </ddm.item>

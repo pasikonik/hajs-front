@@ -1,7 +1,6 @@
-import DS from 'ember-data';
-const { attr, belongsTo, hasMany } = DS;
+import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
 
-export default class Bill extends DS.Model {
+export default class Bill extends Model {
   @attr('string') name
   @attr('number') amount
   @attr('date') createdAt

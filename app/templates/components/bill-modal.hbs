@@ -1,14 +1,14 @@
-{{#bs-modal size="sm"
-            fade=false
-            position="center" as |modal|}}
-  {{#modal.header}}
+<BsModal @size="sm"
+         @fade={{false}}
+         @position="center" as |modal|>
+  <modal.header>
     <h4>Create a new bill</h4>
-  {{/modal.header}}
-  {{#modal.body}}
-    {{#bs-form model=newBill onSubmit=(action "createBill") as |form|}}
-      {{form.element property="name" controlType="text" label="Name"}}
-      {{form.element property="amount" controlType="number" label="Amount"}}
-      {{bs-button defaultText="Submit" type="primary" buttonType="submit" class="float-right"}}
-    {{/bs-form}}
-  {{/modal.body}}
-{{/bs-modal}}
+  </modal.header>
+  <modal.body>
+    <BsForm @model={{this.newBill}} @onSubmit={{action "createBill"}} as |form|>
+      <form.element @property="name" @controlType="text" @label="Name" />
+      <form.element @property="amount" @controlType="number" @label="Amount" />
+      <BsButton @defaultText="Submit" @type="primary" @buttonType="submit" class="float-right" />
+    </BsForm>
+  </modal.body>
+</BsModal>

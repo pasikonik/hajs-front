@@ -1,16 +1,15 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import { get, set } from '@ember/object';
+import { action } from '@ember/object';
 
-export default Controller.extend({
-  currentUser: service(),
+export default class Places extends Controller {
+  @service currentUser
 
-  actions: {
-    async joinToPlace(place) {
-      const user = get(this, 'currentUser.user');
-      set(user, 'place', place);
-      await user.save();
-      this.transitionToRoute('auth.places.place', place);
-    }
+  @action
+  async joinToPlace(place) {
+    const user = this.get('currentUser.user');
+    user.set('place', place);
+    await user.save();
+    this.transitionToRoute('auth.places.place', place);
   }
-})
+}

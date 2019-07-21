@@ -10,8 +10,8 @@ export default class Login extends Controller {
   async authenticate() {
     const credentials = this.getProperties('identification', 'password');
     try {
-      await this.session.authenticate('authenticator:jwt', credentials)
-      this.flashMessages.success('logged in');
+      await this.session.authenticate('authenticator:jwt', credentials);
+      this.transitionToRoute('auth');
     } catch ({ json: { error: { auth } } }) {
       this.flashMessages.danger(auth[0]);
     }

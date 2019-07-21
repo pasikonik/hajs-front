@@ -1,16 +1,20 @@
 <div class="text-center">
-  {{fa-icon "balance-scale" size="4x"}}
+  <h5>{{this.dwellers.length}}</h5>
+  <FaIcon @icon="balance-scale" @size="4x" />
+  <br><br>
 
-  {{#if currentUser.isPayer}}
-
-    Counter: {{dwellers.length}}
-    {{#each dwellers as |dweller|}}
-      {{dweller.username}}
+  {{#if this.currentUser.isPayer}}
+    {{#each this.dwellers as |dweller|}}
+      <div>
+        <strong>{{dweller.username}}</strong>
+        <span class={{if (gt dweller.debt 0) "red" "green"}}>
+          ({{dweller.debt}})
+        </span>
+      </div>
     {{/each}}
-
   {{else}}
-    <h2 class={{if (gt currentUser.debt 0) "red" "green"}}>
-      {{currentUser.debt}}zł
+    <h2 class={{if (gt this.currentUser.debt 0) "red" "green"}}>
+      {{this.currentUser.debt}}zł
     </h2>
   {{/if}}
 </div>
