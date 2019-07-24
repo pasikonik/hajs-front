@@ -1,6 +1,6 @@
 {
   "name": "hajs-front",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "private": true,
   "description": "Small application for rent payment management",
   "repository": "github:pasikonik/hajsapp-front",

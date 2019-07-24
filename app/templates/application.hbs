@@ -46,7 +46,7 @@
                 {{/ddm.link-to}}
               </ddm.item>
               <ddm.item>
-                <a {{action "logout"}} href="#" class="dropdown-item">
+                <a {{on "click" this.logout}} href="#" class="dropdown-item">
                   <FaIcon @icon="sign-out-alt" />
                   Logout
                 </a>
