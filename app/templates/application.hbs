@@ -10,24 +10,24 @@
       <navbar.nav as |nav|>
         {{#if this.session.isAuthenticated}}
           <nav.item>
-            <nav.item @linkTo="auth">Dashboard</nav.item>
+            <nav.item @route="auth">Dashboard</nav.item>
           </nav.item>
           <nav.item>
-            <nav.item @linkTo={{array "auth.places.place" this.currentUser.placeId}}>
+            <nav.item @route="auth.places.place" @model={{this.currentUser.placeId}}>
               Flat
             </nav.item>
           </nav.item>
           {{#unless this.currentUser.isRenter}}
             <nav.item>
-              <nav.item @linkTo="auth.places">Places</nav.item>
+              <nav.item @route="auth.places">Places</nav.item>
             </nav.item>
           {{/unless}}
         {{else}}
           <nav.item>
-            <nav.item @linkTo="login">Login</nav.item>
+            <nav.item @route="login">Login</nav.item>
           </nav.item>
           <nav.item>
-            <nav.item @linkTo="registration">Registration</nav.item>
+            <nav.item @route="registration">Registration</nav.item>
           </nav.item>
         {{/if}}
       </navbar.nav>
