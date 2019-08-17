@@ -1,10 +1,9 @@
 import RSVP from 'rsvp'
+import JWT from 'ember-simple-auth-token/authenticators/jwt';
 import Service from '@ember/service'
 import { isEmpty } from '@ember/utils'
-import { get, set } from '@ember/object';
 import { alias } from '@ember/object/computed';
 import { inject as service } from '@ember/service';
-import JWT from 'ember-simple-auth-token/authenticators/jwt';
 
 export default Service.extend({
   session: service(),
@@ -19,12 +18,12 @@ export default Service.extend({
   debt: alias('user.debt'),
 
   async load() {
-    const token = get(this, 'session.data.authenticated.token');
+    const token = this.get('session.data.authenticated.token');
 
     if(!isEmpty(token)) {
       const userId = this._getUserIdFromToken(token);
-      const user = await get(this, 'store').findRecord('user', userId);
-      set(this, 'user', user)
+      const user = await this.store.findRecord('user', userId);
+      this.set('user', user)
       return user;
     } else {
       return RSVP.resolve();
