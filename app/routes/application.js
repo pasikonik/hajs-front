@@ -10,7 +10,7 @@ export default class Application extends Route.extend(ApplicationRouteMixin) {
   }
 
   sessionAuthenticated() {
-    this._super(...arguments);
+    super.sessionAuthenticated(...arguments);
     this._loadCurrentUser();
   }
 

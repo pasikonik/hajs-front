@@ -9,16 +9,26 @@
     <navbar.content>
       <navbar.nav as |nav|>
         {{#if this.session.isAuthenticated}}
-          <nav.item @route="auth">Dashboard</nav.item>
-          <nav.item @route="auth.places.place" @model={{this.currentUser.placeId}}>
-            Flat
+          <nav.item>
+            <nav.link-to @route="auth"> Dashboard </nav.link-to>
+          </nav.item>
+          <nav.item>
+            <nav.link-to @route="auth.places.place" @model={{this.currentUser.placeId}}>
+              Flat
+            </nav.link-to>
           </nav.item>
           {{#unless this.currentUser.isRenter}}
-            <nav.item @route="auth.places">Places</nav.item>
+            <nav.item>
+              <nav.link-to @route="auth.places"> Places </nav.link-to>
+            </nav.item>
           {{/unless}}
         {{else}}
-          <nav.item @route="login">Login</nav.item>
-          <nav.item @route="registration">Registration</nav.item>
+          <nav.item>
+            <nav.link-to @route="login"> Login </nav.link-to>
+          </nav.item>
+          <nav.item>
+            <nav.link-to @route="registration"> Registration </nav.link-to>
+          </nav.item>
         {{/if}}
       </navbar.nav>
       {{#if this.session.isAuthenticated}}
