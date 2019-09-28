@@ -1,4 +1,5 @@
 import moment from 'moment';
+import fetch from 'fetch';
 import Controller from '@ember/controller';
 import NavigationMixin from '../../../mixins/navigation';
 import { computed, action } from '@ember/object';
@@ -6,7 +7,6 @@ import { inject as service } from '@ember/service';
 import { alias } from '@ember/object/computed';
 
 export default class Place extends Controller.extend(NavigationMixin) {
-  @service ajax
   @service store
   @service currentUser
   @service flashMessages
@@ -47,8 +47,9 @@ export default class Place extends Controller.extend(NavigationMixin) {
 
   @action
   async generateRent() {
-    const rents = await this.ajax.post('/payments/create_rent', {
-      data: {
+    const rents = await fetch('/payments/create_rent', {
+      method: 'POST',
+      body: {
         place_id: this.place.id,
         month: this.month
       }
