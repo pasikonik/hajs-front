@@ -1,70 +1,72 @@
-<BsNavbar as |navbar|>
-  <div class="container">
-    {{navbar.toggle}}
-    {{svg-jar "coin-stack-2" class="logo"}}
-    <div class="navbar-brand">
-      <strong>Hajs</strong>App
-      <span class="app-flag">alpha</span>
-    </div>
-    <navbar.content>
-      <navbar.nav as |nav|>
-        {{#if this.session.isAuthenticated}}
-          <nav.item>
-            <nav.link-to @route="auth"> Dashboard </nav.link-to>
-          </nav.item>
-          <nav.item>
-            <nav.link-to @route="auth.places.place" @model={{this.currentUser.placeId}}>
-              Flat
-            </nav.link-to>
-          </nav.item>
-          {{#unless this.currentUser.isRenter}}
+<div class="ember-view">
+  <BsNavbar as |navbar|>
+    <div class="container">
+      {{navbar.toggle}}
+      {{svg-jar "coin-stack-2" class="logo"}}
+      <div class="navbar-brand">
+        <strong>Hajs</strong>App
+        <span class="app-flag">alpha</span>
+      </div>
+      <navbar.content>
+        <navbar.nav as |nav|>
+          {{#if this.session.isAuthenticated}}
             <nav.item>
-              <nav.link-to @route="auth.places"> Places </nav.link-to>
+              <nav.link-to @route="auth"> Dashboard </nav.link-to>
             </nav.item>
-          {{/unless}}
-        {{else}}
-          <nav.item>
-            <nav.link-to @route="login"> Login </nav.link-to>
-          </nav.item>
-          <nav.item>
-            <nav.link-to @route="registration"> Registration </nav.link-to>
-          </nav.item>
-        {{/if}}
-      </navbar.nav>
-      {{#if this.session.isAuthenticated}}
-        <navbar.nav class="ml-auto" as |nav|>
-          <nav.dropdown as |dd|>
-            <dd.toggle>
-              <FaIcon @icon="child" />
-              {{this.currentUser.username}}
-            </dd.toggle>
-            <dd.menu as |ddm|>
-              <ddm.item>
-                {{#ddm.link-to "auth.settings"}}
-                  <FaIcon @icon="cog" />
-                  Settings
-                {{/ddm.link-to}}
-              </ddm.item>
-              <ddm.item>
-                <a {{on "click" this.logout}} href="#" class="dropdown-item">
-                  <FaIcon @icon="sign-out-alt" />
-                  Logout
-                </a>
-              </ddm.item>
-            </dd.menu>
-          </nav.dropdown>
+            <nav.item>
+              <nav.link-to @route="auth.places.place" @model={{this.currentUser.placeId}}>
+                Flat
+              </nav.link-to>
+            </nav.item>
+            {{#unless this.currentUser.isRenter}}
+              <nav.item>
+                <nav.link-to @route="auth.places"> Places </nav.link-to>
+              </nav.item>
+            {{/unless}}
+          {{else}}
+            <nav.item>
+              <nav.link-to @route="login"> Login </nav.link-to>
+            </nav.item>
+            <nav.item>
+              <nav.link-to @route="registration"> Registration </nav.link-to>
+            </nav.item>
+          {{/if}}
         </navbar.nav>
-      {{/if}}
-    </navbar.content>
+        {{#if this.session.isAuthenticated}}
+          <navbar.nav class="ml-auto" as |nav|>
+            <nav.dropdown as |dd|>
+              <dd.toggle>
+                <FaIcon @icon="child" />
+                {{this.currentUser.username}}
+              </dd.toggle>
+              <dd.menu as |ddm|>
+                <ddm.item>
+                  {{#ddm.link-to "auth.settings"}}
+                    <FaIcon @icon="cog" />
+                    Settings
+                  {{/ddm.link-to}}
+                </ddm.item>
+                <ddm.item>
+                  <a {{on "click" this.logout}} href="#" class="dropdown-item">
+                    <FaIcon @icon="sign-out-alt" />
+                    Logout
+                  </a>
+                </ddm.item>
+              </dd.menu>
+            </nav.dropdown>
+          </navbar.nav>
+        {{/if}}
+      </navbar.content>
+    </div>
+  </BsNavbar>
+
+  <div class="flash-container">
+    {{#each this.flashMessages.queue as |flash|}}
+      {{flash-message flash=flash}}
+    {{/each}}
   </div>
-</BsNavbar>
 
-<div class="flash-container">
-  {{#each this.flashMessages.queue as |flash|}}
-    {{flash-message flash=flash}}
-  {{/each}}
-</div>
-
-<div class="container content">
-  {{outlet}}
+  <div class="container content">
+    {{outlet}}
+  </div>
 </div>
