@@ -1,12 +1,12 @@
 # HajsApp (frontend)
 
-The application to manage rent payments for apartment in group of friends  
+The application to manage rent payments for apartment in group of friends
 
 ## Stack
 
 | ember  | ember-data | ember-cli | node    | yarn   |
 |--------|------------|-----------|---------|--------|
-| 3.12.0 | 3.12.0     | 3.12.0    | 12.9.0  | 1.17.3 |
+| 3.13.0 | 3.13.0     | 3.13.1    | 12.11.0 | 1.17.3 |
 
 ## Backend part
 
