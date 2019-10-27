@@ -41,7 +41,6 @@
     "ember-cli-eslint": "^5.1.0",
     "ember-cli-flash": "^1.7.1",
     "ember-cli-htmlbars": "^4.0.0",
-    "ember-cli-htmlbars-inline-precompile": "^3.0.0",
     "ember-cli-inject-live-reload": "^2.0.1",
     "ember-cli-moment-shim": "^3.7.1",
     "ember-cli-sass": "^10.0.0",
@@ -66,7 +65,7 @@
     "ember-truth-helpers": "^2.0.0",
     "eslint-plugin-ember": "^7.1.0",
     "eslint-plugin-node": "^10.0.0",
-    "liquid-fire": "^0.30.0",
+    "liquid-fire": "^0.31.0",
     "liquid-tether": "^2.0.7",
     "loader.js": "^4.7.0",
     "qunit-dom": "^0.9.0",
@@ -75,8 +74,8 @@
     "stylelint-config-standard": "^19.0.0"
   },
   "engines": {
-    "node": "^12.11.0",
-    "yarn": "^1.17.0"
+    "node": "^13.X",
+    "yarn": "^1.19.0"
   },
   "resolutions": {
     "ember-simple-auth-token/ember-simple-auth": "^1.9.2"
